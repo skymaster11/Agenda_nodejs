@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENDA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
+    crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/77f94d7116.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="#" class="navbar-brand mx-auto">AGENDA</a>
+    </nav>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mt-4 text-center">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Acción</th>
+                    </tr>
+                    <% for(var i = 0; i < personas.length; i++){ %>
+                        <tr>
+                            <td><%= personas[i].nombre%></td>
+                            <td><%= personas[i].correo%></td>
+                            <td><%= personas[i].telefono%></td>
+                            <td><a href="/agenda/<%= personas[i].id_agenda%>" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+            <div class="col-md-6 mt-4 card">
+                <form action="/agenda" method="post" class="card-body">
+                    <h3 class="card-title">Agregar contacto</h3>
+                    <div class="form-group">
+                        <input id="title" type="text" name="nombre" placeholder="Nombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="correo" placeholder="Correo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="telefono" placeholder="Teléfono" class="form-control">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Agregar">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('title').focus();
+    </script>
+
+</body>
+</html>
